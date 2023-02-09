@@ -9,7 +9,7 @@ export function Home() {
                 <Header />
             </header>
             <section>
-                <h1>PAC message in this empty space?? idk</h1>
+                <h1>???????????????</h1>
             </section>
         </div>
     )
