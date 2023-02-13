@@ -9,7 +9,7 @@ import styles from '../../Styles/ShopStyling.module.css'
 // TODO block dashboard if not logged in
 const x = []
 for (let i = 0; i < 100; i++) {
-    x.push(<div className="testBox">a</div>)
+    x.push(<div className={styles.testBox} key={i}>a</div>)
 }
 
 export function Shop() {
@@ -18,12 +18,12 @@ export function Shop() {
       <header>
         <Header />
       </header>
-      <article className="articleStyling">
-        <section className="dashboardSyling">
+      <article className={styles.articleStyling}>
+        <section className={styles.dashboardStyling}>
           <p>Amount of money remaining: money</p>
           <p>Amount of money spent: money</p>
         </section>
-        <section className="shopStyling">
+        <section className={styles.shopStyling}>
             {x}
         </section>
       </article>

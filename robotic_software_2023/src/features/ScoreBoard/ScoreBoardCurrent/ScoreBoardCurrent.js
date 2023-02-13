@@ -2,24 +2,18 @@ import React from "react";
 
 import { Header } from "../../Header/Header";
 import { TeamDisplayComponent } from "./TeamDisplayComponent";
-
-import {
-  body,
-  scores,
-} from "../../AdminPanel/AdminScore/AdminScoreStyling";
-
-import { timer, center, scoreBoardGrid } from "./ScoreBoardCurrentStyling";
+import styles from '../../../Styles/ScoreBoardStyling.module.css'
 
 export function ScoreBoardCurrent() {
   return (
-    <div style={body}>
+    <div className={styles.body}>
       <Header />
       <article>
-        <div style={center}>
-            <section style={timer}>10:00</section>
+        <div className={styles.center} >
+            <section className={styles.timer}>10:00</section>
         </div>
-        <section style={scoreBoardGrid}>
-          <div style={scores}>
+        <section className={styles.scoreBoardGrid}>
+          <div className={styles.scores}>
             <TeamDisplayComponent />
             <TeamDisplayComponent />
             <TeamDisplayComponent />

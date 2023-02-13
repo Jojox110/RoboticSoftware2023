@@ -1,0 +1,17 @@
+.documentationGrid {
+    display: flex;
+    grid-template-columns: 1fr 5fr;
+}
+
+.topicsArea {
+    display: flex;
+    height: calc(88vh - 2px);
+    background-color: red;
+}
+
+.documentationArea {
+    display: flex;
+    height: calc(88vh - 2px);
+    background-color: blue;
+}
+

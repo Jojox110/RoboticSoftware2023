@@ -9,14 +9,14 @@ import {
 // Import this component into every other component, do NOT render Header directly into App
 
 export function Header() {
-  const handleChange = (type) => {
-    console.log('here')
-    if (type === "none") {
-      menuDropdownStyling.display = "none";
-    } else if (type === "block") {
-      menuDropdownStyling.display = "block";
-    }
-  };
+  // const handleChange = (type) => {
+  //   console.log('here')
+  //   if (type === "none") {
+  //     menuDropdownStyling.display = "none";
+  //   } else if (type === "block") {
+  //     menuDropdownStyling.display = "block";
+  //   }
+  // };
 
   return (
     <header style={headerStyles}>
@@ -28,8 +28,8 @@ export function Header() {
           <p>Docs</p>
           <div
             style={menuDropdownStyling}
-            onMouseOver={handleChange("block")}
-            onMouseOut={handleChange("none")}
+            // onMouseOver={handleChange("block")}
+            // onMouseOut={handleChange("none")}
           >
             <a href="#">Docs</a>
             <a href="#">Examples</a>

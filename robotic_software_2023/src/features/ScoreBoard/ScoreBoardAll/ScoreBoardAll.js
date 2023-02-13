@@ -1,14 +1,14 @@
 import React from "react";
 import { Header } from "../../Header/Header";
-import { TeamDisplayComponent } from "../ScoreBoardAll/TeamDisplayComponent";
-import { teamDisplayGrid, center } from "./ScoreBoardAllStyling";
+import { TeamDisplayComponent } from "./TeamDisplayComponent";
+import styles from '../../../Styles/ScoreBoardStyling.module.css'
 
 export function ScoreBoardAll() {
   return (
     <div>
       <Header />
-      <div style={center}>
-        <article style={teamDisplayGrid}>
+      <div className={styles.center}>
+        <article className={styles.teamDisplayGrid}>
             <TeamDisplayComponent placeNumber={"First Place"} />
             <TeamDisplayComponent placeNumber={"Second Place"} />
             <TeamDisplayComponent placeNumber={"Third Place"} />

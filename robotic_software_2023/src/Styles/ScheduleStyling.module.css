@@ -1,0 +1,13 @@
+.tableRowStyling {
+    display: flex;
+    border: 1px solid black;
+    height: 5vh;
+    gap: 4rem;
+}
+
+.centerTable {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(88vh - 2px);
+}

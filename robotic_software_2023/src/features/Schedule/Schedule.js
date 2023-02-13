@@ -2,11 +2,12 @@ import React from "react";
 
 import { Header } from "../Header/Header";
 import { tableRowStyling, centerTable } from "./ScheduleStyling";
+import styles from '../../Styles/ScheduleStyling.module.css'
 
 export function Schedule() {
   const scheduleDisplays = [];
   const scheduleDisplay = (
-    <tr style={tableRowStyling}>
+    <tr className={styles.tableRowStyling}>
       <td>Round #</td>
       <td>School Name</td>
       <td>School Name</td>
@@ -21,7 +22,7 @@ export function Schedule() {
   return (
     <div>
       <Header />
-      <div style={centerTable}>
+      <div className={styles.centerTable}>
         <table>
           <tbody>
             {scheduleDisplays}
