@@ -3,12 +3,13 @@
 import React from "react";
 import { Header } from "../Header/Header";
 
-import { dashboardStyling, articleStyling, shopStyling, testBox } from "./ShopStyling";
+//import { dashboardStyling, articleStyling, shopStyling, testBox } from "./ShopStyling.jd";
+import styles from '../../Styles/ShopStyling.module.css'
 
 // TODO block dashboard if not logged in
 const x = []
 for (let i = 0; i < 100; i++) {
-    x.push(<div style={testBox}>a</div>)
+    x.push(<div className="testBox">a</div>)
 }
 
 export function Shop() {
@@ -17,12 +18,12 @@ export function Shop() {
       <header>
         <Header />
       </header>
-      <article style={articleStyling}>
-        <section style={dashboardStyling}>
+      <article className="articleStyling">
+        <section className="dashboardSyling">
           <p>Amount of money remaining: money</p>
           <p>Amount of money spent: money</p>
         </section>
-        <section style={shopStyling}>
+        <section className="shopStyling">
             {x}
         </section>
       </article>

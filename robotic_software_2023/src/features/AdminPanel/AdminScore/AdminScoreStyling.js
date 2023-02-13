@@ -43,7 +43,7 @@ export const teamDisplayStyling = {
   display: "flex",
   padding: "1rem",
   border: "2px solid black",
-  height: "60vh",
+  height: "35vh",
   width: "25vw",
   justifyContent: "center",
 };
@@ -52,6 +52,7 @@ export const teamDisplayGap = {
   display: "flex",
   flexDirection: "column",
   gap: 100,
+  textAlign: "center",
 };
 
 export const teamDisplayButtons = {

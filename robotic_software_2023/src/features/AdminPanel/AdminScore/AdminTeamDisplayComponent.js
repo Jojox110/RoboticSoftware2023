@@ -2,7 +2,7 @@ import React from  'react';
 import { store } from '../../../store';
 import { teamDisplayStyling, teamDisplayGap, teamDisplayButtons, teamDisplayButtonsContainer } from './AdminScoreStyling';
 
-export function TeamDisplayComponent(props) {
+export function AdminTeamDisplayComponent(props) {
     return (
         <div style={teamDisplayStyling}>
             <div style={teamDisplayGap}>

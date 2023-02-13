@@ -1,0 +1,33 @@
+.dashboardStyling {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  border: 1px solid black;
+  margin: 4rem;
+  background-color: lightgray;
+  height: 35vh;
+}
+
+.articleStyling {
+  margin: 4rem;
+  border: 1px solid black;
+}
+
+.shopStyling {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 1rem;
+  background-color: lightgray;
+  margin: 4rem;
+  height: 75vh;
+  overflow: scroll;
+}
+
+.testBox {
+  height: 100px;
+  width: 100px;
+  background-color: red;
+  border: 1px solid black;
+}

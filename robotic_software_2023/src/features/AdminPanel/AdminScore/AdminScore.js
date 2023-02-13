@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 
 import { Header } from "../../Header/Header";
-import { TeamDisplayComponent } from "./TeamDisplayComponent";
+import { AdminTeamDisplayComponent } from "./AdminTeamDisplayComponent";
 
 import {
   scoreBoardGrid,
@@ -48,9 +48,9 @@ export function AdminScore() {
           </table>
         </section> */}
         <section style={scores}>
-          <TeamDisplayComponent teamName={"team1"} />
-          <TeamDisplayComponent teamName={"team2"} />
-          <TeamDisplayComponent teamName={"team3"} />
+          <AdminTeamDisplayComponent teamName={"team1"} />
+          <AdminTeamDisplayComponent teamName={"team2"} />
+          <AdminTeamDisplayComponent teamName={"team3"} />
         </section>
       </article>
     </div>

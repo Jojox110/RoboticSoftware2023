@@ -12,14 +12,21 @@ export const headerStyles = {
 
 export const headerStylesLogo = {
   display: "flex",
-  border: '1px solid black',
-  height: '10vh',
-  width: 'auto',
+  border: "1px solid black",
+  height: "10vh",
+  width: "auto",
 };
 
 export const headerStylesLinks = {
   display: "flex",
   color: "blue",
   gap: "2rem",
-  fontSize: '1.5rem', // 18px
-};  
+  fontSize: "1.5rem", // 18px
+};
+
+export const menuDropdownStyling = {
+  display: "none",
+  zIndex: 1,
+  position: "absolute",
+  width: "160px",
+};
