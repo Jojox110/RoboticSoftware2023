@@ -6,7 +6,7 @@ import styles from '../../../Styles/ScoreBoardStyling.module.css'
 
 export function TeamDisplayComponent() {
     return (
-        <article className={styles.teamDisplayStyling}>
+        <article className={styles.teamDisplayStylingCurrent}>
             <div className={styles.teamDisplayGap}>
                 <div className={styles.teamImageDummy}>Team Name</div>
                 <section className={styles.flexStart}>

@@ -1,7 +1,8 @@
 .tableRowStyling {
     display: flex;
     border: 1px solid black;
-    height: 5vh;
+    height: 8vh;
+    width: 75vw;
     gap: 4rem;
 }
 

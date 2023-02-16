@@ -1,17 +1,38 @@
 .documentationGrid {
     display: flex;
-    grid-template-columns: 1fr 5fr;
 }
 
 .topicsArea {
     display: flex;
-    height: calc(88vh - 2px);
+    flex-direction: column;
+    text-align: center;
+
+    height: calc(88vh - 2px - 2rem);
+    width: 15%;
     background-color: red;
+    gap: 1rem;
+    padding: 1rem 0;
 }
 
 .documentationArea {
     display: flex;
+    flex-direction: column;
+    text-align: center;
+
     height: calc(88vh - 2px);
+    width: 85%;
     background-color: blue;
+}
+
+.documentationTemplate {
+
+}
+
+.documentationTemplate h3 {
+    font-size: 2rem;
+}
+
+.documentationTemplate p {
+    font-size: 1.5rem;
 }
 
