@@ -9,9 +9,9 @@
 
     height: calc(88vh - 2px - 2rem);
     width: 15%;
-    background-color: red;
-    gap: 1rem;
+    gap: 3vmin;
     padding: 1rem 0;
+    background-color: lightblue;
 }
 
 .documentationArea {
@@ -21,18 +21,25 @@
 
     height: calc(88vh - 2px);
     width: 85%;
-    background-color: blue;
+    overflow: scroll;
 }
 
 .documentationTemplate {
-
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    flex-direction: column;
 }
 
 .documentationTemplate h3 {
-    font-size: 2rem;
+    font-size: 4vmin;
 }
 
 .documentationTemplate p {
-    font-size: 1.5rem;
+    font-size: 2vmin;
+}
+
+.documentationTemplateMargin {
+    margin-top: 3vmin;
 }
 

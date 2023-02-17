@@ -8,10 +8,10 @@ export function TeamDisplayComponent() {
     return (
         <article className={styles.teamDisplayStylingCurrent}>
             <div className={styles.teamDisplayGap}>
-                <div className={styles.teamImageDummy}>Team Name</div>
+                <div className={styles.teamImageDummyCurrent}>Team Name</div>
                 <section className={styles.flexStart}>
-                    <div>AMOUNT OF POINTS:</div>
-                    <div>POINTS</div>
+                    <p>AMOUNT OF POINTS:</p>
+                    <p>POINTS</p>
                 </section>
             </div>
         </article>

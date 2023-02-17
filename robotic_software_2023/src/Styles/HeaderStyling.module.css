@@ -34,6 +34,7 @@ p {
     position: absolute;
     font-size: 1.5rem;
     background-color: gray;
+    height: 10vh;
 }
 
 .dropdown {
@@ -44,4 +45,10 @@ p {
 .dropdown:hover .menuDropdownStyling {
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
+}
+
+a, p {
+    font-size: 3vmin;
+    text-decoration: none;
 }

@@ -25,6 +25,7 @@ function App() {
           <Route path="/score/current" element={<ScoreBoardCurrent />} />
           <Route path="/score/all" element={<ScoreBoardAll />} />
           <Route path="/documentation" element={<Documentation />} />
+          <Route path='/admin/score/' element={<AdminScore />} />
         </Routes>
       </main>
     </BrowserRouter>

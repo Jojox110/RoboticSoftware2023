@@ -26,8 +26,8 @@
 }
 
 .testBox {
-  height: 100px;
-  width: 100px;
+  height: 10vh;
+  width: 6vw;
   background-color: red;
   border: 1px solid black;
 }

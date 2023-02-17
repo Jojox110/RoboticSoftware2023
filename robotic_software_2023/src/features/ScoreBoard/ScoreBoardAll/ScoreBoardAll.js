@@ -22,9 +22,12 @@ export function ScoreBoardAll() {
             </article>
         </div>
         <section className={styles.nextRound}>
-            <div>Team 1</div>
-            <div>Team 2</div>
-            <div>Team 3</div>
+            <p>Next round</p>
+            <section className={styles.nextRoundContainer}>
+                <div>Team 1</div>
+                <div>Team 2</div>
+                <div>Team 3</div>
+            </section>
         </section>
 
     </div>);
