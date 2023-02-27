@@ -4,6 +4,7 @@ import logo from "./logo.svg";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import { Header } from "./features/Header/Header";
+import { CommingSoon } from "./features/commingsoon/CommingSoon";
 import { Home } from "./features/Home/Home";
 import { Shop } from "./features/Shop/Shop";
 import { AdminScore } from "./features/AdminPanel/AdminScore/AdminScore";
@@ -29,6 +30,7 @@ function App() {
         </Routes>
       </main>
     </BrowserRouter>
+    //<CommingSoon />
   );
 }
 
