@@ -6,7 +6,7 @@ import { store } from "./store";
 import { Header } from "./features/Header/Header";
 import { Home } from "./features/Home/Home";
 import { Shop } from "./features/Shop/Shop";
-import { AdminScore } from "./features/AdminPanel/AdminScore/AdminScore.js";
+import { AdminScore } from "./features/AdminPanel/AdminScore/AdminScore";
 import { Schedule } from "./features/Schedule/Schedule";
 import { Documentation } from "./features/Documentation/Documentation";
 import { ScoreBoardCurrent } from "./features/ScoreBoard/ScoreBoardCurrent/ScoreBoardCurrent";
@@ -25,7 +25,7 @@ function App() {
           <Route path="/score/current" element={<ScoreBoardCurrent />} />
           <Route path="/score/all" element={<ScoreBoardAll />} />
           <Route path="/documentation" element={<Documentation />} />
-          <Route path='/admin/score/' element={<AdminScore />} />
+          <Route path="/admin/score" element={<AdminScore />} />
         </Routes>
       </main>
     </BrowserRouter>
