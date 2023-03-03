@@ -12,9 +12,9 @@ export function AdminScore() {
       <Header />
       <article className={styles.scoreBoardGrid}>
         <section className={styles.scores}>
-          <AdminTeamDisplayComponent teamName={"team1"} />
-          <AdminTeamDisplayComponent teamName={"team2"} />
-          <AdminTeamDisplayComponent teamName={"team3"} />
+          <AdminTeamDisplayComponent id={0}/>
+          <AdminTeamDisplayComponent id={1} />
+          <AdminTeamDisplayComponent id={2} />
         </section>
       </article>
     </div>

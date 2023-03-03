@@ -17,19 +17,21 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <BrowserRouter>
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/schedule" element={<Schedule />} />
-          <Route path="/score/current" element={<ScoreBoardCurrent />} />
-          <Route path="/score/all" element={<ScoreBoardAll />} />
-          <Route path="/documentation" element={<Documentation />} />
-          <Route path="/admin/score" element={<AdminScore />} />
-        </Routes>
-      </main>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/shop" element={<Shop />} />
+            <Route path="/schedule" element={<Schedule />} />
+            <Route path="/score/current" element={<ScoreBoardCurrent />} />
+            <Route path="/score/all" element={<ScoreBoardAll />} />
+            <Route path="/documentation" element={<Documentation />} />
+            <Route path="/admin/score" element={<AdminScore />} />
+          </Routes>
+        </main>
+      </BrowserRouter>
+    </Provider>
     //<CommingSoon />
   );
 }

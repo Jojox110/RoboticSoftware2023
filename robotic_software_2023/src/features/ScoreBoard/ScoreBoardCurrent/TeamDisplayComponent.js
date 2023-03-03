@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { teamDisplayStyling } from '../../AdminPanel/AdminScore/AdminScoreStyling';
-import {teamImageDummy, flexStart, teamDisplayGap, center} from './ScoreBoardCurrentStyling'
 import styles from '../../../Styles/ScoreBoardStyling.module.css'
 
 export function TeamDisplayComponent() {

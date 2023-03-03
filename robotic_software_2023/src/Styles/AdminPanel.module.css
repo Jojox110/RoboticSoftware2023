@@ -41,15 +41,22 @@
     height: 100%;
 }
 
+.teamDisplayImage {
+    height: 15vh;
+    width: 10vw;
+    position: absolute;
+}
+
 img {
     height: 15vh;
     width: 10vw;
 }
 
 .teamDisplayDropdown {
-
+    display: none;
 }
 
-.teamDisplayImage:hover .teamDisplayDropdown {
-
+.teamDisplayImage:hover > .teamDisplayDropdown {
+    display: block;
+    position: absolute;
 }

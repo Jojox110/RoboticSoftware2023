@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {};
+const initialState = ['team1', 'team2', 'team3']
 
 const currentRoundScores = createSlice({
   name: "currentRoundScores",
@@ -14,26 +14,25 @@ const currentRoundScores = createSlice({
 const currentRoundTeams = createSlice({
   name: "currentRoundTeams",
   initialState,
-  reducers: {
-    addTeam: {
-      reducer: (state, action) => {
-        return [...state, action.payload];
-      },
+  reducers : {
+    removeTeam (state, action) {
+      //console.log('remove')
+      //console.log(state[action.payload.oldTeamId])
+      const newState = [...state, state.filter(prev => prev !== state[action.payload.oldTeamId])]
+      console.log(newState)
+      return newState;
     },
-    removeTeam: {
-      redicer: (state, action) => {
-        return [
-          ...state,
-          state.filter((prev) => prev.id !== action.payload.id),
-        ];
-      },
-    },
-  },
+    // addTeam (state, action) {
+    //   //console.log('add')
+    //   //console.log(initialState)
+    //   return [...state, action.payload.newTeam]
+    // }
+  }
 });
 
 const reducers = {
   currentRoundScores: currentRoundScores,
-  //currentRoundTeams: currentRoundTeams,
+  currentRoundTeams: currentRoundTeams,
 };
 
 export default reducers;
