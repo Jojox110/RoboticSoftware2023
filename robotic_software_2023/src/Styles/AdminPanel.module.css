@@ -45,3 +45,11 @@ img {
     height: 15vh;
     width: 10vw;
 }
+
+.teamDisplayDropdown {
+
+}
+
+.teamDisplayImage:hover .teamDisplayDropdown {
+
+}
