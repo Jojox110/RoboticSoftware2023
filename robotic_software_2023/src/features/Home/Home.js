@@ -1,16 +1,37 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useState} from "react";
+import {useFetch} from "../hooks";
+import axios from 'axios'
 
-import { Header } from '../Header/Header';
+import {Header} from '../Header/Header';
 
 export function Home() {
+    const [data, setData] = useState([])
+
+    const fetchData = async () => {
+        fetch("http://localhost:5000/currentround/1")
+            .then(response => {
+                return response.json()
+            })
+            .then (x => {
+                setData(x)
+            })
+    }
+
+        useEffect(() => {
+            fetchData()
+        }, [])
+
     return (
         <div>
             <header>
-                <Header />
+                <Header/>
             </header>
-            <section>
-                <h1>???????????????</h1>
-            </section>
+            <div>
+                {data.map(user => (
+                    <div key={user.id}>{user.teamname}{user.amountofpoints}</div>
+                ))}
+            </div>
         </div>
     )
 }

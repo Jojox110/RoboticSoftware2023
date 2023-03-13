@@ -13,7 +13,7 @@
     display: flex;
     padding: 1rem;
     border: 2px solid black;
-    height: 60vh;
+    height: 65vh;
     width: 25vw;
     justify-content: center;
 }
@@ -52,6 +52,11 @@ img {
     width: 10vw;
 }
 
+p {
+    margin: 0;
+    padding: 0;
+}
+
 .teamDisplayDropdown {
     display: none;
 }
@@ -59,4 +64,20 @@ img {
 .teamDisplayImage:hover > .teamDisplayDropdown {
     display: block;
     position: absolute;
+}
+
+.shopDisplay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 25vmin;
+    font-size:  5vmin;
+
+    height: calc(88vh - 4px);
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
 }

@@ -1,34 +1,50 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = ['team1', 'team2', 'team3']
+const initialTeamState = ['team1', 'team2', 'team3']
+const initialScoreState = [0, 0, 0]
 
 const currentRoundScores = createSlice({
   name: "currentRoundScores",
-  initialState,
+  initialState: initialScoreState,
   reducers: {
-    increment: (state) => state + 1,
-    decrement: (state) => state - 1,
+    increment: (state, action) => {
+      const newState = [...state]
+      newState[action.payload] += 1
+      return newState
+    },
+    decrement: (state, action) => {
+      const newState = [...state]
+      newState[action.payload] -= 1
+      return newState
+    },
+    showCurrentPoints (state, action) {
+      return [
+          action.payload.team1, action.payload.team2, action.payload.team3
+      ]
+    }
   },
 });
 
 const currentRoundTeams = createSlice({
   name: "currentRoundTeams",
-  initialState,
+  initialState: initialTeamState,
   reducers : {
-    removeTeam (state, action) {
-      //console.log('remove')
-      //console.log(state[action.payload.oldTeamId])
-      const newState = [...state, state.filter(prev => prev !== state[action.payload.oldTeamId])]
-      console.log(newState)
-      return newState;
+    swapTeam (state, action) {
+      const newState = [...state]
+      console.log("a aa a", newState, action.payload)
+      newState[action.payload.id] = [action.payload.newTeam, 0, action.payload.id]
+      console.log('a', newState)
+      return newState
     },
-    // addTeam (state, action) {
-    //   //console.log('add')
-    //   //console.log(initialState)
-    //   return [...state, action.payload.newTeam]
-    // }
+    showCurrentTeams (state, action) {
+      console.log("show teams")
+      return [
+          action.payload.team1, action.payload.team2, action.payload.team3
+      ]
+    }
   }
 });
+
 
 const reducers = {
   currentRoundScores: currentRoundScores,

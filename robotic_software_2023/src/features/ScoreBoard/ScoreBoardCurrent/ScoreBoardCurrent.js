@@ -14,9 +14,9 @@ export function ScoreBoardCurrent() {
         </div>
         <section className={styles.scoreBoardGrid}>
           <div className={styles.scores}>
-            <TeamDisplayComponent />
-            <TeamDisplayComponent />
-            <TeamDisplayComponent />
+            <TeamDisplayComponent id={0}/>
+            <TeamDisplayComponent id={1}/>
+            <TeamDisplayComponent id={2}/>
           </div>
         </section>
       </article>
