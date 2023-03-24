@@ -1,16 +1,30 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { store } from '../../../store.js'
+import io from 'socket.io-client'
 
 import styles from '../../../Styles/AdminPanel.module.css'
 import mm from '../../../SchoolLogos/Logo_Mathieu-Martin.png'
+
+const socket = io.connect('http://localhost:5000');
 
 export function AdminTeamDisplayComponent(props) {
     const dispatch = useDispatch()
     const teams = useSelector((state) => state.currentRoundTeams)
     const scores = useSelector((state) => state.currentRoundScores)
 
+    const sendScoreData = () => {
+        const teamname = store.getState().currentRoundTeams[props.id]
+        const newScore = store.getState().currentRoundScores[props.id]
+        const id = props.id
+        socket.emit("changeScore", {teamname: teamname, newScore: newScore, id: id})
+        console.log("score data sent")
+    }
+
     const swapTeam = (teamName, id)  => {
+        const finalScore = store.getState().currentRoundScores[props.id]
+        socket.emit("receiveAllTeamScoreUpdate", {teamname: teamName, id: id, finalScore: finalScore})
+        //socket.emit("receiveScoreUpdate", {teamname: teamName, id: id, newScore: 0})
         dispatch({
             type: 'currentRoundTeams/swapTeam',
             payload: {
@@ -115,6 +129,7 @@ export function AdminTeamDisplayComponent(props) {
             },
             body: JSON.stringify(newData)
         })
+        await sendScoreData()
     }
 
     // const fetchData = async() => {
@@ -124,9 +139,15 @@ export function AdminTeamDisplayComponent(props) {
     //         })
     // }
     //
-    // useEffect(() => {
-    //     fetchData()
-    // }, [])
+    useEffect(() => {
+        socket.on("receiveScoreUpdate", (data) => {
+            console.log("score update received")
+            dispatch({
+                type: 'currentRoundScores/updateTeamPoint',
+                payload: data
+            })
+        })
+    }, [socket])
 
     const finalScore = store.getState().currentRoundScores[props.id]
     const currentTeam = store.getState().currentRoundTeams[props.id][0]
@@ -154,7 +175,7 @@ export function AdminTeamDisplayComponent(props) {
                 </div>
                 <div>
                     <p>{store.getState().currentRoundTeams[props.id][0]}</p>
-                    <p>{store.getState().currentRoundScores[props.id]}</p>
+                    <p>{scores[props.id]}</p>
                 </div>
                 <div className={styles.teamDisplayButtonsContainer}>
                     <button className={styles.teamDisplayButtons} onClick={changeCurrentRoundPointData("increment")}>+</button>

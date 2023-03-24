@@ -2,6 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialTeamState = ['team1', 'team2', 'team3']
 const initialScoreState = [0, 0, 0]
+const initialAllTeamsState = []
+const initialAllScoresState = []
 
 const currentRoundScores = createSlice({
   name: "currentRoundScores",
@@ -21,6 +23,12 @@ const currentRoundScores = createSlice({
       return [
           action.payload.team1, action.payload.team2, action.payload.team3
       ]
+    },
+    updateTeamPoint (state, action) {
+      const newState = [...state]
+      console.log("newScore asafasdfasd", action.payload.newScore)
+      newState[action.payload.id] = action.payload.newScore
+      return newState
     }
   },
 });
@@ -30,10 +38,9 @@ const currentRoundTeams = createSlice({
   initialState: initialTeamState,
   reducers : {
     swapTeam (state, action) {
+      console.log("here here here ")
       const newState = [...state]
-      console.log("a aa a", newState, action.payload)
       newState[action.payload.id] = [action.payload.newTeam, 0, action.payload.id]
-      console.log('a', newState)
       return newState
     },
     showCurrentTeams (state, action) {
@@ -45,10 +52,37 @@ const currentRoundTeams = createSlice({
   }
 });
 
+const allTeams = createSlice({
+  name: 'allTeams',
+  initialState: initialAllTeamsState,
+  reducers: {
+    showAllTeams (state, action) {
+      console.log("all teams")
+      return [
+          action.payload.teams
+      ]
+    }
+  }
+})
+
+const allScores = createSlice({
+  name: 'allScores',
+  initialState: initialAllScoresState,
+  reducers: {
+    showAllScores (state, action) {
+      console.log("all scores")
+      return [
+          action.payload.scores
+      ]
+    }
+  }
+})
 
 const reducers = {
   currentRoundScores: currentRoundScores,
   currentRoundTeams: currentRoundTeams,
+  allTeams: allTeams,
+  allScores: allScores,
 };
 
 export default reducers;

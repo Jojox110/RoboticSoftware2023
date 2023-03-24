@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {store} from "../../../store";
 import {useDispatch} from "react-redux";
 import {Header} from "../../Header/Header";
 import {AdminTeamDisplayComponent} from "./AdminTeamDisplayComponent";
 
 import styles from '../../../Styles/AdminPanel.module.css'
+
 
 export function AdminScore() {
     const dispatch = useDispatch()

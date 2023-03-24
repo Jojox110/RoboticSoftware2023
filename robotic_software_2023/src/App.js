@@ -1,7 +1,6 @@
 import React, {useEffect} from "react";
 import {useState} from "react";
 
-import logo from "./logo.svg";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import { Header } from "./features/Header/Header";
@@ -17,28 +16,7 @@ import { ScoreBoardAll } from "./features/ScoreBoard/ScoreBoardAll/ScoreBoardAll
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import io from 'socket.io-client'
-
-const socket = io()
-
 function App() {
-  const [data, setData] = useState();
-  const [isConnected, setIsConnected] = useState(socket.connected);
-
-  useEffect(() => {
-    socket.on('connect', () => {
-      setIsConnected(true);
-    })
-    socket.on('disco0nnect', () => {
-      setIsConnected(false)
-    })
-
-    return () => {
-      socket.off('connect')
-      socket.off('disconnect')
-    }
-  }, [])
-
   return (
     <Provider store={store}>
       <BrowserRouter>

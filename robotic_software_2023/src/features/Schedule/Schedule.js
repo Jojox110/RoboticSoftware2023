@@ -12,7 +12,6 @@ export function Schedule() {
       <td>School Name</td>
       <td>School Name</td>
       <td>School Name</td>
-      <td>School Name</td>
     </tr>
   );
   for (let i = 0; i < 10; i++) {

@@ -3,6 +3,9 @@ import {store} from "../../../store";
 
 import styles from '../../../Styles/ScoreBoardStyling.module.css'
 import {useDispatch, useSelector} from "react-redux";
+import io from 'socket.io-client';
+
+const socket = io.connect("http://localhost:5000")
 
 export function TeamDisplayComponent(props) {
     const teams = useSelector((state) => state.currentRoundTeams)
@@ -45,9 +48,9 @@ export function TeamDisplayComponent(props) {
         })
     }
 
-    const getData = async () => {
+    const getData = () => {
         try {
-            await fetch('http://localhost:5000/currentround/')
+            fetch('http://localhost:5000/currentround/')
                 .then (res => {
                     return res.json()
                 })
@@ -62,7 +65,13 @@ export function TeamDisplayComponent(props) {
 
     useEffect(() => {
         getData()
-    }, [])
+        socket.on("receiveScoreUpdate", (data) => {
+            dispatch({
+                type: 'currentRoundScores/updateTeamPoint',
+                payload: data
+            })
+        })
+    }, [socket])
 
     return (
         <article className={styles.teamDisplayStylingCurrent}>

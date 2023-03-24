@@ -1,9 +1,9 @@
-const {errorMonitor} = require("ws");
+// const {errorMonitor} = require("ws");
 const Pool = require('pg').Pool
 const pool = new Pool({
     user: 'jojox',
     host: 'localhost',
-    database: 'robotcomp',
+    database: 'postgres',
     password: 'grc',
     port: 5432,
 })
@@ -51,7 +51,6 @@ const changeTeam = (request, response) => {
             if (error) {
                 throw error
             }
-            console.log("potato")
             response.status(200).end("added points to the teams table")
         }
     )
@@ -62,7 +61,6 @@ const changeTeam = (request, response) => {
             if (error) {
                 throw error
             }
-            console.log("potato potato")
             response.status(200).end('done update teamDisplay')
         }
     )
@@ -71,14 +69,14 @@ const changeTeam = (request, response) => {
 const changeScore = (request, response) => {
     const {newScore} = request.body
     const id = parseInt(request.params.id)
-    console.log("id", id)
+    console.log("id", id, "changeScore")
 
     if (newScore < 0) {
         throw new Error("cannot have negative points")
     }
 
     pool.query(
-        `UPDATE currentround SET amountofpoints = $1 WHERE id=$2`, [newScore, id],
+        `UPDATE currentround SET amountofpoints = $1 WHERE id=$2`, [newScore, id + 1],
         (error, result) => {
             if (error) {
                 throw error
@@ -88,10 +86,49 @@ const changeScore = (request, response) => {
     )
 }
 
+const purchaseItem = (request, response) => {
+    const {school, item, amount} = request.body
+
+    pool.query(
+        `INSERT INTO purchases (teamname, itemname, amount) VALUES ($1, $2, $3)`, [school, item, amount],
+        (error, result) => {
+            if (error) {
+                throw error
+            }
+            response.status(200).end("inserted purchase into DB")
+        }
+    )
+    console.log(`past first query, purchaseItem`)
+
+    pool.query(
+        `UPDATE teams SET amountofmoney=amountofmoney-100 WHERE teamname='team1'`,
+        (error, result) => {
+            if (error) {
+                throw error
+            }
+            response.status(200).end("updated teams")
+        }
+    )
+}
+
+const getAllItems = (request, response) => {
+    pool.query(
+        `SELECT * FROM items`,
+        (error, result) => {
+            if (error) {
+                throw error
+            }
+            response.status(200).json(result.rows)
+        }
+    )
+}
+
 module.exports = {
     getUsers,
     getCurrentTeams,
+    getAllItems,
     getCurrentTeamsById,
     changeTeam,
-    changeScore
+    changeScore,
+    purchaseItem
 }
