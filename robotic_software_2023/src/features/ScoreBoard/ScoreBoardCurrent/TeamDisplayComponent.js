@@ -5,7 +5,7 @@ import styles from '../../../Styles/ScoreBoardStyling.module.css'
 import {useDispatch, useSelector} from "react-redux";
 import io from 'socket.io-client';
 
-const socket = io.connect("http://localhost:5000")
+// const socket = io.connect("http://localhost:5000")
 
 export function TeamDisplayComponent(props) {
     const teams = useSelector((state) => state.currentRoundTeams)
@@ -52,7 +52,9 @@ export function TeamDisplayComponent(props) {
         try {
             fetch('http://localhost:5000/currentround/')
                 .then (res => {
-                    return res.json()
+                    const x = res.json()
+                    console.log("testing testing testing", x)
+                    return x
                 })
                 .then (res => {
                     showCurrentTeams(res)
@@ -63,15 +65,23 @@ export function TeamDisplayComponent(props) {
         }
     }
 
-    useEffect(() => {
-        getData()
-        socket.on("receiveScoreUpdate", (data) => {
-            dispatch({
-                type: 'currentRoundScores/updateTeamPoint',
-                payload: data
-            })
-        })
-    }, [socket])
+    // useEffect(() => {
+    //     getData()
+    //     socket.on("receiveScoreUpdate", (data) => {
+    //         console.log("received", data)
+    //         dispatch({
+    //             type: 'currentRoundScores/updateTeamPoint',
+    //             payload: data
+    //         })
+    //     })
+    //     socket.on("receiveTeamUpdate", (data) => {
+    //         console.log("received team update")
+    //         dispatch({
+    //             type: 'currentRoundTeams/swapTeam',
+    //             payload: {newTeam: data.teamname, newScore: 0, id:data.id}
+    //         })
+    //     })
+    // }, [socket])
 
     return (
         <article className={styles.teamDisplayStylingCurrent}>

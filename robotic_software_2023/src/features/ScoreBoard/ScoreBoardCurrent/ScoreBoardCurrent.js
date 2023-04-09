@@ -5,14 +5,14 @@ import { TeamDisplayComponent } from "./TeamDisplayComponent";
 import styles from '../../../Styles/ScoreBoardStyling.module.css'
 import io from "socket.io-client";
 
-const socket = io({transports: ['http://localhost:5000']});
+// const socket = io({transports: ['http://localhost:5000']});
 
 export function ScoreBoardCurrent() {
-    useEffect(() => {
-        socket.on("receiveScoreUpdate", (data) => {
-            console.log(data)
-        })
-    }, [socket])
+    // useEffect(() => {
+    //     socket.on("receiveScoreUpdate", (data) => {
+    //         console.log(data)
+    //     })
+    // }, [socket])
 
   return (
     <div className={styles.body}>

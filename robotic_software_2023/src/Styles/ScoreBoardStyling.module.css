@@ -115,3 +115,44 @@
 a:visited {
     color: inherit;
 }
+
+@media only screen and (max-width: 800px) {
+    .scores {
+        display: flex;
+        flex-direction: column;
+        margin-top: 1rem;
+        gap: 1rem;
+    }
+    .teamDisplayStylingCurrent {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        height: 40vh;
+        width: 80vw;
+        border: 1px solid black;
+    }
+    .teamImageDummyCurrent {
+        display: flex;
+        height: 20vh;
+        width: 60vw;
+        border: 1px solid blue;
+    }
+
+    .teamDisplayStylingAll {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        height: 30vh;
+        width: 40vw;
+        border: 1px solid black;
+        gap: 3vmin;
+    }
+
+    .teamDisplayGrid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+        margin: 2rem 0;
+    }
+}

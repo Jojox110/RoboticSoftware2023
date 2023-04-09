@@ -4,9 +4,9 @@ import { store } from '../../../store.js'
 import io from 'socket.io-client'
 
 import styles from '../../../Styles/AdminPanel.module.css'
-import mm from '../../../SchoolLogos/Logo_Mathieu-Martin.png'
+import mm from '../../../SchoolLogos/MM.png'
 
-const socket = io.connect('http://localhost:5000');
+//const socket = io.connect('http://127.0.0.1:5000');
 
 export function AdminTeamDisplayComponent(props) {
     const dispatch = useDispatch()
@@ -14,17 +14,16 @@ export function AdminTeamDisplayComponent(props) {
     const scores = useSelector((state) => state.currentRoundScores)
 
     const sendScoreData = () => {
-        const teamname = store.getState().currentRoundTeams[props.id]
+        const teamname = store.getState().currentRoundTeams[props.id][0]
         const newScore = store.getState().currentRoundScores[props.id]
         const id = props.id
-        socket.emit("changeScore", {teamname: teamname, newScore: newScore, id: id})
-        console.log("score data sent")
+        //socket.emit("changeScore", {teamname: teamname, newScore: newScore, id: id})
+        console.log("score data sent", store.getState())
     }
 
-    const swapTeam = (teamName, id)  => {
+    const swapTeam = (teamName, id, previousTeam)  => {
         const finalScore = store.getState().currentRoundScores[props.id]
-        socket.emit("receiveAllTeamScoreUpdate", {teamname: teamName, id: id, finalScore: finalScore})
-        //socket.emit("receiveScoreUpdate", {teamname: teamName, id: id, newScore: 0})
+        //socket.emit("receiveAllTeamScoreUpdate", {teamname: teamName, id: id, finalScore: finalScore})
         dispatch({
             type: 'currentRoundTeams/swapTeam',
             payload: {
@@ -32,6 +31,21 @@ export function AdminTeamDisplayComponent(props) {
                 id: id,
             }
         })
+        dispatch({
+            type: 'currentRoundScores/resetTeamScore',
+            payload: {
+                newScore: 0,
+                id: id,
+            }
+        })
+        const x = ['team1', 'team2', 'team3', 'team4', 'team5', 'team6', 'team7', 'team8', 'team9', 'team10', 'team11']
+        console.log("typeof previousteam", typeof previousTeam)
+        const allTeamsId = x.indexOf(previousTeam)
+        console.log("allTeamsId", allTeamsId)
+        //socket.emit("changeAllTeamScore", {teamname: teamName, id:allTeamsId, newScore: finalScore})
+        //socket.emit("changeScore", {teamname: teamName, id: id, newScore: 0})
+        //socket.emit("changeTeam", {teamname: teamName, id:id})
+        console.log("change score and change team emitted")
     }
 
     const showCurrentTeams = (teams) => {
@@ -94,7 +108,7 @@ export function AdminTeamDisplayComponent(props) {
                 },
                 body: JSON.stringify(newData)
             })
-            await swapTeam(newTeam, props.id)
+            await swapTeam(newTeam, props.id, currentTeam)
             console.log(store.getState().currentRoundTeams)
         }
         catch (err) {
@@ -139,18 +153,20 @@ export function AdminTeamDisplayComponent(props) {
     //         })
     // }
     //
-    useEffect(() => {
-        socket.on("receiveScoreUpdate", (data) => {
-            console.log("score update received")
-            dispatch({
-                type: 'currentRoundScores/updateTeamPoint',
-                payload: data
-            })
-        })
-    }, [socket])
+    //useEffect(() => {
+    //     socket.on("receiveScoreUpdate", (data) => {
+    //         console.log("score update received", data)
+    //         dispatch({
+    //             type: 'currentRoundScores/updateTeamPoint',
+    //             payload: data
+    //         })
+    //         console.log(store.getState())
+    //     })
+    // }, [socket])
 
     const finalScore = store.getState().currentRoundScores[props.id]
     const currentTeam = store.getState().currentRoundTeams[props.id][0]
+    console.log("currentTeam", typeof currentTeam)
 
     return (
         <div className={styles.teamDisplayStyling}>

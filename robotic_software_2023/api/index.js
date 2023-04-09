@@ -24,11 +24,16 @@ io.on("connection", (socket) => {
     })
 
     socket.on("changeAllTeamScore", (data) => {
+        console.log("broadcasted changeAllTeamScore")
         socket.broadcast.emit("receiveAllTeamScoreUpdate", data)
     })
 
-    socket.on("swapCurrentTeam", (data) => {
-        socket.broadcast.emit("receiveSwapCurrentTeam", data)
+    socket.on("changeTeam", (data) => {
+        console.log("sent")
+        socket.broadcast.emit("receiveTeamUpdate", data)
+    })
+    socket.on("changeDataAllTeams", (data) => {
+        socket.broadcast.emit("receiveDataAllTeams", data)
     })
 })
 
@@ -41,12 +46,16 @@ app.use(
 )
 
 app.get('/users/', db.getUsers)
+app.get('/usersMoney/:id', db.getUserById)
 app.get('/currentround/', db.getCurrentTeams)
 app.get('/currentround/:id', db.getCurrentTeamsById)
 app.get('/items/', db.getAllItems)
+app.get('/items/:id', db.getItemData)
+app.get('/teamidByPwd/:id', db.getTeamByPassword)
 
 app.put('/currentround/teams/:id', db.changeTeam)
 app.put("/currentround/scores/:id", db.changeScore)
 
 app.post('/purchase/', db.purchaseItem)
+app.post('/refund/', db.refundItem)
 

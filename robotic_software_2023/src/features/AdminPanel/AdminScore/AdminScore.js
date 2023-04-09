@@ -1,14 +1,16 @@
 import React, {useEffect} from "react";
 import {store} from "../../../store";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Header} from "../../Header/Header";
 import {AdminTeamDisplayComponent} from "./AdminTeamDisplayComponent";
+import {AdminLogin} from "../AdminLogin";
 
 import styles from '../../../Styles/AdminPanel.module.css'
 
 
 export function AdminScore() {
     const dispatch = useDispatch()
+    const loginStatus = useSelector(state => state.adminLogin)
 
     const showCurrentInfo = (teams) => {
         let team1 = []
@@ -67,7 +69,7 @@ export function AdminScore() {
 
     getData()
 
-    return (
+    const loggedInScreen = (
         <div className={styles.body}>
             <Header/>
             <article className={styles.scoreBoardGrid}>
@@ -77,6 +79,16 @@ export function AdminScore() {
                     <AdminTeamDisplayComponent id={2}/>
                 </section>
             </article>
+        </div>
+    )
+
+    const loginScreen = (
+        <AdminLogin />
+    )
+
+    return (
+        <div>
+            {loginStatus ? loggedInScreen : loginScreen}
         </div>
     );
 }

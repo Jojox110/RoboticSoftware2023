@@ -4,19 +4,20 @@
   align-items: center;
 
   border: 1px solid black;
-  margin: 4rem;
+  margin: 1rem;
   background-color: lightgray;
   height: 35vh;
 }
 
 .articleStyling {
-  margin: 4rem;
+  margin: 1rem;
   border: 1px solid black;
 }
 
 .shopStyling {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
 
   gap: 1rem;
   background-color: lightgray;
@@ -30,4 +31,28 @@
   width: 6vw;
   background-color: red;
   border: 1px solid black;
+}
+
+.imgStyling {
+  width: 20vw;
+  height: 30vh;
+}
+
+@media only screen and (max-width: 800px) {
+  .shopStyling {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    gap: 0.5rem;
+    background-color: lightgray;
+    margin: 1rem;
+    height: 75vh;
+    overflow: scroll;
+  }
+
+  .imgStyling {
+    width: 22vw;
+    height: 10vh;
+  }
 }

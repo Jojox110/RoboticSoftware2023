@@ -37,12 +37,32 @@ p {
     height: 10vh;
 }
 
+.mobileMenuDropdownStyling {
+    display: none;
+    z-index: 1;
+    position: absolute;
+    font-size: 1.5rem;
+    background-color: gray;
+    height: 50vh;
+}
+
 .dropdown {
     position: relative;
     display: inline-block;
 }
 
+.mobileDropdown {
+    position: relative;
+    display: inline-block;
+}
+
 .dropdown:hover .menuDropdownStyling {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.mobileDropdown:hover .mobileMenuDropdownStyling {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;

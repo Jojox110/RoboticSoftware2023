@@ -1,9 +1,9 @@
 .tableRowStyling {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     border: 1px solid black;
     height: 8vh;
-    width: 75vw;
+    width: 85vw;
     font-size: 4vmin;
     gap: 5.5vmin;
 }

@@ -2,15 +2,30 @@ import React, {useEffect, useState} from "react";
 import {Header} from "../../Header/Header";
 import {TeamDisplayComponent} from "./TeamDisplayComponent";
 import styles from '../../../Styles/ScoreBoardStyling.module.css'
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {store} from '../../../store'
 import io from 'socket.io-client'
 
-const socket = io.connect("http://localhost:5000")
+import mm from '../../../SchoolLogos/MM.png'
+import ljr from '../../../SchoolLogos/LJR.png'
+import aqv from '../../../SchoolLogos/AQV.png'
+import cc from '../../../SchoolLogos/CC.png'
+import cdj from '../../../SchoolLogos/CdJ.png'
+import eme from '../../../SchoolLogos/EME.png'
+import esa from '../../../SchoolLogos/ESA.png'
+import esn from '../../../SchoolLogos/ESN.png'
+import odc from '../../../SchoolLogos/ODC.png'
+import prp from '../../../SchoolLogos/PRP.png'
+import sdc from '../../../SchoolLogos/SdC.png'
+import wal from '../../../SchoolLogos/WAL.png'
+
+// const socket = io.connect("http://localhost:5000")
 
 export function ScoreBoardAll() {
     const dispatch = useDispatch()
     const [isDataRetrieved, setIsDataRetrieved] = useState(false)
+    let teams  = useSelector(state => state.allTeams[0])
+    let scores = useSelector(state => state.allScores[0])
 
     const fetchData = () => {
         console.log("fetch data")
@@ -19,12 +34,13 @@ export function ScoreBoardAll() {
                 return res.json()
             })
             .then(res => {
+                console.log("res", res)
                 let teams = ['', '', '', '', '', '', '', '', '', '', '']
                 let scores = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
                 for (let i = 0; i < 11; i++) {
-                    teams[res[i].id - 1] = res[i].teamname
-                    scores[res[i].id - 1] = res[i].amountofpoints
+                    teams[res[i].ID - 1] = res[i].teamname
+                    scores[res[i].ID - 1] = res[i].amountofpoints
                 }
 
                 dispatch({
@@ -41,25 +57,44 @@ export function ScoreBoardAll() {
                 })
             })
     }
-
-    fetchData()
-
     useEffect(() => {
         setTimeout(() => {
+            fetchData()
             setIsDataRetrieved(true)
         }, 400)
-        socket.on("receiveAllTeamScoreUpdate", (data) => {
-            console.log("receiveAllTeamScoreUpdate", data)
-        })
-    })
+    //     socket.on("receiveAllTeamScoreUpdate", (data) => {
+    //         fetchData()
+    //         console.log("receiveDataAllTeams ScoreBoardAll.js")
+    //         console.log("state 1", store.getState(), "currentTeam", data.teamame)
+    //         console.log(data, "eeeeeeeeeeeeeeeeeeeeeeee")
+    //         dispatch({
+    //             type: 'allScores/changeAllScores',
+    //             payload: data
+    //         })
+    //         console.log("state 2", store.getState())
+    //     })
+    //     // socket.on("receiveTeamUpdate", (data) => {
+    //     //     console.log("receiveTeamUpdate ScoreBoardAll.js")
+    //     //     dispatch({
+    //     //         type: 'currentRoundTeams/swapTeam',
+    //     //         payload: {newTeam: data.teamname, newScore: 0, id:data.id}
+    //     //     })
+    //     // })
+    }, [])
 
     if (!isDataRetrieved) {
         return (
             <div>Loading ...</div>
         )
     }
-    const teams = store.getState().allTeams[0]
-    const scores = store.getState().allScores[0]
+    else {
+        console.log("teams", teams)
+        console.log("scores", scores)
+
+        console.log("teams v2", store.getState().allTeams)
+        console.log("scores v2", store.getState().allScores)
+
+    }
 
     return (<div className={styles.body}>
         <Header/>

@@ -8,6 +8,10 @@ import {Header} from '../Header/Header';
 export function Home() {
     const [data, setData] = useState([])
 
+    fetch('https://jsonplaceholder.typicode.com/todos/1')
+        .then(response => response.json())
+        .then(json => console.log(json))
+
     const fetchData = async () => {
         fetch("http://localhost:5000/currentround/1")
             .then(response => {

@@ -1,88 +1,116 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 
 const initialTeamState = ['team1', 'team2', 'team3']
 const initialScoreState = [0, 0, 0]
-const initialAllTeamsState = []
-const initialAllScoresState = []
+const initialAllTeamsState = ['team1', 'team2', 'team3', 'team4', 'team5', 'team6', 'team7', ' team8', 'team9', 'team10', 'team11']
+const initialAllScoresState = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 const currentRoundScores = createSlice({
-  name: "currentRoundScores",
-  initialState: initialScoreState,
-  reducers: {
-    increment: (state, action) => {
-      const newState = [...state]
-      newState[action.payload] += 1
-      return newState
+    name: "currentRoundScores",
+    initialState: initialScoreState,
+    reducers: {
+        increment: (state, action) => {
+            const newState = [...state]
+            newState[action.payload] += 1
+            return newState
+        },
+        decrement: (state, action) => {
+            const newState = [...state]
+            newState[action.payload] -= 1
+            return newState
+        },
+        showCurrentPoints(state, action) {
+            return [
+                action.payload.team1, action.payload.team2, action.payload.team3
+            ]
+        },
+        updateTeamPoint(state, action) {
+            const newState = [...state]
+            console.log("newScore asafasdfasd", action.payload.newScore, newState[action.payload.id])
+            newState[action.payload.id] = action.payload.newScore
+            console.log("new state", newState)
+            return newState
+        },
+        resetTeamScore(state, action) {
+            const newState = [...state]
+            newState[action.payload.id] = 0
+            return newState
+        }
     },
-    decrement: (state, action) => {
-      const newState = [...state]
-      newState[action.payload] -= 1
-      return newState
-    },
-    showCurrentPoints (state, action) {
-      return [
-          action.payload.team1, action.payload.team2, action.payload.team3
-      ]
-    },
-    updateTeamPoint (state, action) {
-      const newState = [...state]
-      console.log("newScore asafasdfasd", action.payload.newScore)
-      newState[action.payload.id] = action.payload.newScore
-      return newState
-    }
-  },
 });
 
 const currentRoundTeams = createSlice({
-  name: "currentRoundTeams",
-  initialState: initialTeamState,
-  reducers : {
-    swapTeam (state, action) {
-      console.log("here here here ")
-      const newState = [...state]
-      newState[action.payload.id] = [action.payload.newTeam, 0, action.payload.id]
-      return newState
-    },
-    showCurrentTeams (state, action) {
-      console.log("show teams")
-      return [
-          action.payload.team1, action.payload.team2, action.payload.team3
-      ]
+    name: "currentRoundTeams",
+    initialState: initialTeamState,
+    reducers: {
+        swapTeam(state, action) {
+            console.log("here here here ")
+            const newState = [...state]
+            newState[action.payload.id] = [action.payload.newTeam, 0, action.payload.id]
+            return newState
+        },
+        showCurrentTeams(state, action) {
+            console.log("show teams")
+            return [
+                action.payload.team1, action.payload.team2, action.payload.team3
+            ]
+        }
     }
-  }
 });
 
 const allTeams = createSlice({
-  name: 'allTeams',
-  initialState: initialAllTeamsState,
-  reducers: {
-    showAllTeams (state, action) {
-      console.log("all teams")
-      return [
-          action.payload.teams
-      ]
+    name: 'allTeams',
+    initialState: initialAllTeamsState,
+    reducers: {
+        showAllTeams(state, action) {
+            console.log("all teams")
+            return [
+                action.payload.teams
+            ]
+        }
     }
-  }
 })
 
-const allScores = createSlice({
-  name: 'allScores',
-  initialState: initialAllScoresState,
-  reducers: {
-    showAllScores (state, action) {
-      console.log("all scores")
-      return [
-          action.payload.scores
-      ]
+function deepCopy(obj) {
+    let newObj = Array.isArray(obj) ? [] : {};
+    for (let key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            if (typeof obj[key] === 'object' && obj[key] !== null) {
+                newObj[key] = deepCopy(obj[key]);
+            } else {
+                newObj[key] = obj[key];
+            }
+        }
     }
-  }
+    return newObj;
+}
+
+const allScores = createSlice({
+    name: 'allScores',
+    initialState: initialAllScoresState,
+    reducers: {
+        showAllScores(state, action) {
+            console.log("all scores")
+            return [
+                action.payload.scores
+            ]
+        },
+        changeAllScores(state, action) {
+            console.log("changeAllScores")
+            let newState = deepCopy(state)
+            console.log("newState reducer", newState, newState[0][action.payload.id], action.payload.id, "newScore", action.payload.newScore)
+            newState[0][action.payload.id] += action.payload.newScore
+            console.log("newState reducer v2", newState)
+            return newState
+        }
+    }
 })
 
 const reducers = {
-  currentRoundScores: currentRoundScores,
-  currentRoundTeams: currentRoundTeams,
-  allTeams: allTeams,
-  allScores: allScores,
+    currentRoundScores: currentRoundScores,
+    currentRoundTeams: currentRoundTeams,
+    allTeams: allTeams,
+    allScores: allScores,
 };
 
 export default reducers;
