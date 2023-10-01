@@ -43,3 +43,35 @@
     margin-top: 3vmin;
 }
 
+.img {
+    width: 45vh;
+    height: 40vh;
+}
+
+.softwareImg {
+    width: 80vh;
+    height: 40vh;
+}
+
+.docsContainer {
+    margin-bottom: 15vh;
+}
+
+h1 {
+    font-size: 5vmin;
+}
+h2 {
+    font-size: 4vmin;
+}
+
+@media only screen and (max-width: 800px) {
+    .softwareImg {
+        width: 40vh;
+        height: 40vh;
+    }
+    .img {
+        width: 35vh;
+        height: auto;
+    }
+}
+

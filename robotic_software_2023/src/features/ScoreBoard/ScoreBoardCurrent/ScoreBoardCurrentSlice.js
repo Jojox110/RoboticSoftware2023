@@ -4,6 +4,9 @@ const initialTeamState = ['team1', 'team2', 'team3']
 const initialScoreState = [0, 0, 0]
 const initialAllTeamsState = ['team1', 'team2', 'team3', 'team4', 'team5', 'team6', 'team7', ' team8', 'team9', 'team10', 'team11']
 const initialAllScoresState = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+const initialAllImgpathState = ['', '', '', '', '', '', '', '', '', '', '', '']
+const initialTimerState = ''
+const initialTimerStatusState = true
 
 const currentRoundScores = createSlice({
     name: "currentRoundScores",
@@ -11,7 +14,8 @@ const currentRoundScores = createSlice({
     reducers: {
         increment: (state, action) => {
             const newState = [...state]
-            newState[action.payload] += 1
+            console.log("asdkfasfasdf eeeeeeeeeee", typeof newState[action.payload], newState[action.payload])
+            newState[action.payload] = parseInt(newState[action.payload]) + 1
             return newState
         },
         decrement: (state, action) => {
@@ -106,11 +110,45 @@ const allScores = createSlice({
     }
 })
 
+// const allImgpath = createSlice({
+//     name: 'allImgpath',
+//     initialState: initialAllImgpathState,
+//     reducers: {
+//         showAllImgpaths (state, action) {
+//             return [
+//                 action.payload
+//             ]
+//         }
+//     }
+// })
+
+const timerTime = createSlice({
+    name: 'timerTime',
+    initialState: initialTimerState,
+    reducers: {
+        setTimerEnd: (state, action) => {
+            return action.payload
+        }
+    }
+})
+
+const timerStatus = createSlice({
+    name: 'timerStatus',
+    initialState: initialTimerStatusState,
+    reducers: {
+        changeTimerStatus: (state, action) => {
+            return action.payload
+        }
+    }
+})
+
 const reducers = {
     currentRoundScores: currentRoundScores,
     currentRoundTeams: currentRoundTeams,
     allTeams: allTeams,
     allScores: allScores,
+    timerTime: timerTime,
+    timerStatus: timerStatus
 };
 
 export default reducers;

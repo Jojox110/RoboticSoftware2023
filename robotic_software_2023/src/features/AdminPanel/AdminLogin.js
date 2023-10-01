@@ -8,16 +8,21 @@ export function AdminLogin() {
     const validatePassword = () => {
         console.log("pwdRef.current", pwdRef.current.value)
         const password = pwdRef.current.value
-        fetch(`http://localhost:5000/teamidByPwd/${password}`)
+        if (password[0] !== "A" && password.length !== 8) {
+            return;
+        }
+        fetch(`http://test2.placeauxrobots.ca/teamsByPwd/${password}`)
             .then (res => {
                 return res.json()
             })
             .then (res => {
-                console.log("res res", res)
-                dispatch({
-                    type: 'adminLogin/login',
-                    payload: true
-                })
+                console.log("res res", res[0].ID)
+                if (parseInt(res[0].ID) === 13) {
+                    dispatch({
+                        type: 'adminLogin/login',
+                        payload: true
+                    })
+                }
             })
     }
 

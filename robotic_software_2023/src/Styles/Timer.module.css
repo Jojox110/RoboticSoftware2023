@@ -1,0 +1,22 @@
+.timer {
+    font-size: 12.5vmin;
+}
+
+.timerSection {
+    height: 20vh;
+    border: 2px solid black;
+    margin: 4vh 10vh;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    justify-items: center;
+    align-items: center;
+    height: 20vh;
+}
+
+.buttonStyling {
+    height: 10vh;
+    width: 30vh;
+}

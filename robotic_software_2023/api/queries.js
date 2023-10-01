@@ -12,7 +12,7 @@ const getUsers = (request, response) => {
     })
 }
 
-const getUseAmountOfMoneyrById = (request, response) => {
+const getUseAmountOfMoneyById = (request, response) => {
     const id = request.params.id
     console.log("getUserById", id)
     connection.query(`SELECT amountofmoney FROM teams WHERE ID='${id + 1}'`, (error, result) => {
@@ -156,7 +156,7 @@ const getTeamByPassword = (request, response) => {
 
 module.exports = {
     getUsers,
-    getUserById: getUseAmountOfMoneyrById,
+    getUserById: getUseAmountOfMoneyById,
     getCurrentTeams,
     getAllItems,
     getCurrentTeamsById,

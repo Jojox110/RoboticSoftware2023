@@ -1,12 +1,29 @@
 .dashboardStyling {
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  justify-items: center;
   align-items: center;
 
   border: 1px solid black;
   margin: 1rem;
   background-color: lightgray;
-  height: 35vh;
+  height: 20vh;
+  font-size: 3vmin;
+}
+
+.loggedInDashboardStyling {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 20vh;
+  background-color: lightgray;
+  margin: 1rem;
+  border: 1px solid black;
+}
+
+.loggedInDashboardStyling > p {
+  font-size: 8vmin;
 }
 
 .articleStyling {
@@ -18,6 +35,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  padding: 2vh;
 
   gap: 1rem;
   background-color: lightgray;

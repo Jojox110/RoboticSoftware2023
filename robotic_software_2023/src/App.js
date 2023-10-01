@@ -9,7 +9,7 @@ import { Home } from "./features/Home/Home";
 import { Shop } from "./features/Shop/Shop";
 import { AdminScore } from "./features/AdminPanel/AdminScore/AdminScore";
 import { AdminShop } from './features/AdminPanel/AdminShop/AdminShop';
-import { Schedule } from "./features/Schedule/Schedule";
+import { Schedule } from "./features/Schedule/a/Schedule";
 import { Documentation } from "./features/Documentation/Documentation";
 import { ScoreBoardCurrent } from "./features/ScoreBoard/ScoreBoardCurrent/ScoreBoardCurrent";
 import { ScoreBoardAll } from "./features/ScoreBoard/ScoreBoardAll/ScoreBoardAll";
@@ -23,13 +23,13 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/shop" element={<Shop />} />
-            <Route path="/schedule" element={<Schedule />} />
-            <Route path="/score/current" element={<ScoreBoardCurrent />} />
-            <Route path="/score/all" element={<ScoreBoardAll />} />
+            <Route path="/magasin" element={<Shop />} />
+            <Route path="/horaire" element={<Schedule />} />
+            <Route path="/pointage/actuel" element={<ScoreBoardCurrent />} />
+            <Route path="/pointage/total" element={<ScoreBoardAll />} />
             <Route path="/documentation" element={<Documentation />} />
-            <Route path="/admin/score" element={<AdminScore />} />
-            <Route path="/admin/shop" element={<AdminShop />} />
+            <Route path="/admin/pointage" element={<AdminScore />} />
+            <Route path="/admin/magasin" element={<AdminShop />} />
           </Routes>
         </main>
       </BrowserRouter>
