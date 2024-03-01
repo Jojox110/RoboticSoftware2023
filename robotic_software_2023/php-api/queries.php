@@ -26,7 +26,8 @@ function getUsers($request, $response) {
     } else {
         $response->json(array());
     }
-}
+} go lang
+
 
 function getUseAmountOfMoneyrById($request, $response) {
     global $conn;
